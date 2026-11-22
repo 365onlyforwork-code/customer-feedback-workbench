@@ -1,40 +1,38 @@
-# 贝翰战略咨询 · 客户反馈工作台
+# Customer Feedback Workbench · Beihan Strategy Consulting
 
-客户可在本机导入 XLSX、CSV 或 TSV，按业务规则分析反馈，跟进工单、对照抽查方案并导出结果。提供中文和英文界面。创作者为 Yanbing Min。
+Import XLSX, CSV, or TSV files, analyze feedback, track cases, compare review samples, and export results. The interface is available in English and Chinese. Created by Yanbing Min.
 
-## 下载工作台 · Download
+## Download
 
-**[下载 Windows / Windows ZIP](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-Windows.zip)** · **[下载 macOS / macOS ZIP](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-macOS.zip)** · [版本说明与校验 / Release notes and checksums](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/tag/v1.0.0)
+**[Download for Windows](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-Windows.zip)** · **[Download for macOS](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-macOS.zip)** · [Release notes and checksums](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/tag/v1.0.0)
 
-| 系统 / Platform | 支持范围 / Supported versions |
+| Platform | Supported versions |
 | --- | --- |
-| Windows | Windows 10/11 x64 · Windows 11 ARM64 |
-| macOS | macOS 14+ · Apple 芯片或 Intel / Apple silicon or Intel |
+| Windows | Windows 10/11 x64 and Windows 11 ARM64 |
+| macOS | macOS 14 or later, on Apple silicon or Intel |
 
-完整解压 ZIP，双击包内的 **Start 客户反馈工作台.cmd**（Windows）或 **Start 客户反馈工作台.command**（macOS）。两个包均自带运行时。首次登录密码会显示在启动窗口，具体步骤见包内《开始使用.txt》。
+Extract the entire ZIP. On Windows, double-click **Start 客户反馈工作台.cmd**. On macOS, double-click **Start 客户反馈工作台.command**. Both packages include the runtime. The launch window shows the administrator password on first run. See the bundled `开始使用.txt` (Getting Started) for details.
 
-Extract the entire ZIP and double-click the Start file for your system. Both packages include the runtime. The launcher shows the administrator password on first run.
+## Run from source
 
-## 开发者从源码运行
-
-前端为原生 HTML、CSS 和 JavaScript。Python HTTP 服务提供认证与 SQLite 账号审批。无 npm 包或第三方 Python 包依赖。macOS 或 Windows 上使用 Python 3.9+ 可从仓库根目录执行：
+The interface uses plain HTML, CSS, and JavaScript. A Python HTTP service handles authentication and stores account approvals in SQLite. The project requires Python 3.9 or later and has no npm or third-party Python dependencies. Run this command from the repository root on macOS or Windows.
 
 ```sh
 python3 app/local_start.py
 ```
 
-Windows 安装 Python 的开发者可使用 `py -3 app/local_start.py`。首次启动会生成本机随机管理员密码，打开浏览器，并在启动窗口显示地址与登录资料的位置。服务只监听 127.0.0.1。
+On Windows, you can also run `py -3 app/local_start.py`. On first launch, the service generates a random administrator password for the machine and opens the browser. The launch window shows the local URL and the location of the sign-in details. The service listens on `127.0.0.1`.
 
-## 代码与数据
+## Code and local data
 
-- `app/` 包含业务页面、字体样式、分类与抽查逻辑，以及原有 Python 服务。本地包入口为 `app/local_start.py`。
-- `app/portable_state.py` 与 `app/assets/portable-state.js` 管理本机恢复副本。读写须使用已登录的账号及同一个浏览器配置，保存会校验版本，以免另一个窗口覆盖现有工作。
-- `packaging/` 包含双击启动文件、客户指南与 ZIP 组装脚本。二进制运行时随 Release 分发，许可证位于各包的 `runtime/`。README 中的运行命令只供从源码开发时使用。
-- Windows 数据目录为 `%LOCALAPPDATA%\Beihan\CustomerFeedback`，Mac 为 `~/Library/Application Support/Beihan/CustomerFeedback`。SQLite 保存账号和本机恢复副本；浏览器继续以原格式保存项目。示例项目为合成数据。
-- 反馈负责人是工单字段，同一台电脑上不同账号或浏览器配置分别管理项目。本地启动版不提供在线团队同步。
+- `app/` contains the business pages, styles, classification and sampling logic, and Python server. The local entry point is `app/local_start.py`.
+- `app/portable_state.py` and `app/assets/portable-state.js` manage local recovery copies. Access requires the same browser profile and signed-in account. Version checks prevent another window from overwriting more recent data.
+- `packaging/` contains launch scripts, customer guides, and the ZIP builder. Release packages include runtime licenses in `runtime/`.
+- The local data directory is `%LOCALAPPDATA%\Beihan\CustomerFeedback` on Windows or `~/Library/Application Support/Beihan/CustomerFeedback` on macOS. SQLite stores accounts and local recovery copies. The browser continues to store projects in their original format. Example projects use synthetic data.
+- Case ownership is recorded on each item. Different accounts and browser profiles maintain separate projects on the same machine. This local edition supports individual workspaces.
 
-## 发布附件
+## Release packaging
 
-将仓库代码提交到 GitHub；在 Releases 中创建对应版本标签（本版为 `v1.0.0`），上传 Windows ZIP、macOS ZIP 及 SHA256SUMS.txt。客户通过 Release 下载安装，无须使用“Code → Download ZIP”。静态 GitHub Pages 不执行 Python 登录服务。
+Create a version tag, such as `v1.0.0`, and attach the Windows ZIP, macOS ZIP, and `SHA256SUMS.txt` to the GitHub Release. Customers can download the packages directly from Releases. Authentication requires the Python service.
 
-维护者可用仓库中的打包脚本复用已核验的两个平台运行时。具体命令见 [打包说明](packaging/README.md)。
+See the [packaging guide](packaging/README.md) for steps to reuse the verified platform runtimes and build the ZIP files.
