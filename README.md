@@ -2,9 +2,18 @@
 
 客户可在本机导入 XLSX、CSV 或 TSV，按业务规则分析反馈，跟进工单、对照抽查方案并导出结果。提供中文和英文界面。创作者为 Yanbing Min。
 
-## 从 Releases 下载
+## 下载工作台 · Download
 
-在本仓库的 Releases 选择 1.0.0。Windows 版和 macOS 版是各自独立的 ZIP，内含 x64 与 ARM64 两套 Python 运行时。客户只需完整解压，双击最外层的 **Start 客户反馈工作台.cmd** 或 **Start 客户反馈工作台.command**。具体系统要求、首次登录及数据备份见 ZIP 根目录的《开始使用.txt》。浏览器使用本机已安装的现代浏览器。
+**[下载 Windows / Windows ZIP](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-Windows.zip)** · **[下载 macOS / macOS ZIP](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/download/v1.0.0/CustomerFeedback-1.0.0-macOS.zip)** · [版本说明与校验 / Release notes and checksums](https://github.com/365onlyforwork-code/customer-feedback-workbench/releases/tag/v1.0.0)
+
+| 系统 / Platform | 支持范围 / Supported versions |
+| --- | --- |
+| Windows | Windows 10/11 x64 · Windows 11 ARM64 |
+| macOS | macOS 14+ · Apple 芯片或 Intel / Apple silicon or Intel |
+
+完整解压 ZIP，双击包内的 **Start 客户反馈工作台.cmd**（Windows）或 **Start 客户反馈工作台.command**（macOS）。两个包均自带运行时。首次登录密码会显示在启动窗口，具体步骤见包内《开始使用.txt》。
+
+Extract the entire ZIP and double-click the Start file for your system. Both packages include the runtime. The launcher shows the administrator password on first run.
 
 ## 开发者从源码运行
 
