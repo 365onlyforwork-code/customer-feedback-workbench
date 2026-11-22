@@ -1,0 +1,61 @@
+name: Verify Windows release ZIP
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Published release tag in this repository
+        type: string
+        required: true
+        default: v1.0.0
+      asset:
+        description: Exact ZIP filename attached to that release
+        type: string
+        required: true
+        default: 客户反馈工作台-1.0.0-Windows.zip
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-2025
+            arch: x64
+          - runner: windows-11-arm
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Download the specified release asset
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          RELEASE_ASSET: ${{ inputs.asset }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          if ($env:RELEASE_TAG -notmatch '^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,80}$') { throw 'Invalid release tag' }
+          if ($env:RELEASE_ASSET -notmatch '^[\p{L}\p{N}_ .-]+-Windows\.zip$') { throw 'Invalid ZIP filename' }
+          $zip = Join-Path $env:RUNNER_TEMP 'windows-release.zip'
+          gh release download $env:RELEASE_TAG --repo $env:GITHUB_REPOSITORY --pattern $env:RELEASE_ASSET --output $zip
+          if ($LASTEXITCODE -ne 0) { throw 'Release asset download failed' }
+          Get-FileHash -Algorithm SHA256 -LiteralPath $zip | Format-List Algorithm,Hash
+          Expand-Archive -LiteralPath $zip -DestinationPath (Join-Path $env:RUNNER_TEMP '本地启动 验收')
+      - name: Start, sign in, save, restart and recover
+        shell: pwsh
+        env:
+          TEST_ARCH: ${{ matrix.arch }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $launchers = @(Get-ChildItem (Join-Path $env:RUNNER_TEMP '本地启动 验收') -File -Recurse -Filter 'Start 客户反馈工作台.cmd')
+          if ($launchers.Count -ne 1) { throw 'Expected exactly one launcher' }
+          $runtime = Join-Path $launchers[0].DirectoryName "runtime/$env:TEST_ARCH/python.exe"
+          & $runtime -I -B -X utf8 tests/verify_windows_release.py $launchers[0].FullName $env:TEST_ARCH
+          if ($LASTEXITCODE -ne 0) { throw 'Customer ZIP test failed' }
