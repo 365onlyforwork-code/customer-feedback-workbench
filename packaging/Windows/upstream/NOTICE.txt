@@ -1,0 +1,21 @@
+﻿Windows 随包运行时
+==================
+
+本包包含 Python Software Foundation 发布的 CPython 3.14.10 Windows embeddable distribution。
+x64 和 ARM64 各自使用对应的原生 Python 解释器。操作系统提供的 Windows 系统 DLL 和 Universal CRT 在 Windows 10/11 中随系统发行。SQLite、Visual C++ 运行库及其他嵌入版依赖已随 CPython 一并提供。各架构目录内的 LICENSE.txt 保留了 Python、第三方组件和 Microsoft Distributable Code 等随附条款；使用和再分发须遵守适用于各组成部分的条款。upstream.spdx.json 为 CPython 官方组件清单。
+
+官方发布和校验值
+https://www.python.org/downloads/release/python-31410/
+系统要求与嵌入说明
+https://docs.python.org/3.14/using/windows.html#supported-windows-versions
+https://docs.python.org/3.14/using/windows.html#the-embeddable-package
+
+x64 原始 ZIP
+https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-amd64.zip
+SHA-256  90905e64a840557d8c1bc4f5b74db3d7ee85e3ffb217611cac1c7813acea4159
+
+ARM64 原始 ZIP
+https://www.python.org/ftp/python/3.14.10/python-3.14.10-embed-arm64.zip
+SHA-256  bbe116bb1248820359cbf25127ac5c7794ea161869d83686cfbc9a45203ff836
+
+运行时两个目录内的上游文件均与经 SHA-256 校验的原始 ZIP 逐文件一致。
