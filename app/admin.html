@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F7F6">
+  <title>注册审批 · 客户反馈工作台</title>
+  <link rel="icon" type="image/png" href="./assets/beihan-graphite.png">
+  <link rel="stylesheet" href="./assets/graphite.css">
+  <link rel="stylesheet" href="./assets/auth.css">
+  <script src="./assets/auth.js" defer></script>
+</head>
+<body data-screen="admin">
+  <header class="account-header">
+    <div class="account-header-inner">
+      <a class="brand" href="./workspace.html">
+        <span class="brand-symbol"><img src="./assets/beihan-graphite.png" alt="" width="640" height="640"></span>
+        <div><strong data-copy="brand">客户反馈工作台</strong><small data-copy="company">贝翰战略咨询</small></div>
+      </a>
+      <div class="header-actions">
+        <div class="language-control" role="group" data-label="language" aria-label="界面语言">
+          <button type="button" data-locale="zh-CN" lang="zh-CN" aria-pressed="true">中文</button>
+          <button type="button" data-locale="en" lang="en" aria-pressed="false">English</button>
+        </div>
+        <button type="button" class="plain-button" id="logout" data-copy="logout">退出登录</button>
+      </div>
+    </div>
+  </header>
+  <main class="admin-main">
+    <a class="back-link" href="./workspace.html"><span aria-hidden="true">←</span> <span data-copy="back">返回工作台</span></a>
+    <div class="approval-layout">
+      <header class="admin-heading">
+        <h1 data-copy="approval">注册审批</h1>
+        <p class="admin-intro" data-copy="adminIntro">批准申请后，用户即可登录工作台。</p>
+      </header>
+      <section class="admin-panel" aria-labelledby="pending-title">
+        <div class="panel-top"><h2 id="pending-title"><span data-copy="pending">待审批</span> <span class="count" id="pending-count" hidden></span></h2><button type="button" class="plain-button" id="refresh" data-copy="refresh">刷新</button></div>
+        <p id="admin-message" class="notice" aria-live="polite" hidden></p>
+        <p id="list-status" role="status" class="list-status">正在加载申请…</p>
+        <div id="users-table-wrap" class="table-scroll" hidden>
+          <table>
+            <thead><tr><th scope="col" data-copy="username">用户名</th><th scope="col" data-copy="requested">申请时间</th><th scope="col" data-copy="action">操作</th></tr></thead>
+            <tbody id="users-table"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+  <noscript>请启用 JavaScript 以管理申请。Enable JavaScript to manage requests.</noscript>
+</body>
+</html>

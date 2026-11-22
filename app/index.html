@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F7F6">
+  <title>登录 · 客户反馈工作台</title>
+  <link rel="icon" type="image/png" href="./assets/beihan-graphite.png">
+  <link rel="stylesheet" href="./assets/graphite.css">
+  <link rel="stylesheet" href="./assets/auth.css">
+  <script src="./assets/auth.js" defer></script>
+</head>
+<body data-screen="auth">
+  <header class="entry-header">
+    <div class="entry-header-inner">
+      <div class="entry-brand">
+        <img src="./assets/beihan-graphite.png" alt="" width="40" height="40">
+        <span class="cover-signature" data-copy="company">贝翰战略咨询</span>
+      </div>
+      <div class="language-control" role="group" data-label="language" aria-label="界面语言">
+        <button type="button" data-locale="zh-CN" lang="zh-CN" aria-pressed="true">中文</button>
+        <button type="button" data-locale="en" lang="en" aria-pressed="false">English</button>
+      </div>
+    </div>
+  </header>
+  <main class="account-background">
+    <div class="entry-frame">
+      <div class="brand-cover">
+        <div class="cover-art" aria-hidden="true">
+          <div class="cover-sheet"><img src="./assets/beihan-graphite.png" alt="" width="640" height="640"></div>
+        </div>
+        <p class="cover-title" data-copy="brand">客户反馈工作台</p>
+      </div>
+      <section class="auth-card" aria-labelledby="form-title">
+        <h1 id="form-title">登录工作台</h1>
+        <p class="form-intro" id="form-intro">使用已获批的账户访问客户反馈项目。</p>
+        <form id="auth-form" method="post" novalidate>
+          <div class="field">
+            <label for="username" data-copy="username">用户名</label>
+            <input id="username" name="username" type="text" required autocapitalize="none" autocomplete="username" spellcheck="false">
+            <p id="username-hint" class="field-hint" data-copy="usernameHint" hidden>3–40 个字符，可使用字母、数字、点、短横线和下划线，以字母或数字开头。</p>
+          </div>
+          <div class="field">
+            <label for="password" data-copy="password">密码</label>
+            <div class="password-row">
+              <input id="password" name="password" type="password" required autocomplete="current-password">
+              <button type="button" class="show-password" id="show-password" aria-controls="password" aria-pressed="false">显示</button>
+            </div>
+            <p id="password-hint" class="field-hint" data-copy="passwordHint" hidden>8–128 个字符。</p>
+          </div>
+          <p id="form-message" class="notice" aria-live="polite" hidden></p>
+          <button type="submit" class="primary" id="submit-auth">登录</button>
+        </form>
+        <div class="form-switch"><span id="switch-prompt">首次使用？</span><button type="button" id="switch-mode" class="text-button">申请账户</button></div>
+      </section>
+    </div>
+  </main>
+  <noscript>请启用 JavaScript 以登录。Enable JavaScript to sign in.</noscript>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="汇总客户反馈，分派负责人，跟踪到期事项并导出跟进清单。" data-en-content="Review customer feedback, assign owners, track deadlines and export follow-ups.">
+  <meta name="theme-color" content="#F7F7F6">
+  <title data-en="Beihan Strategy Consulting | Customer Feedback Workspace">贝翰战略咨询｜客户反馈工作台</title>
+  <link rel="icon" type="image/png" href="./assets/beihan-graphite.png">
+  <link rel="stylesheet" href="./assets/graphite.css">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/overview.css">
+  <link rel="stylesheet" href="./assets/followup.css">
+  <link rel="stylesheet" href="./assets/review-tags.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-en="Skip to main content">跳到主内容</a>
+  <div class="workspace-shell">
+    <header class="masthead">
+      <div class="masthead-inner">
+        <button type="button" class="wordmark" data-action="go-overview" aria-label="贝翰战略咨询｜客户反馈工作台，返回项目总览" data-en-aria="Customer Feedback Workspace, back to overview">
+          <span class="brand-symbol"><img src="./assets/beihan-graphite.png" alt="" width="640" height="640"></span>
+          <span class="brand-name"><strong data-en="Customer Feedback">客户反馈工作台</strong><small data-en="Beihan Strategy Consulting">贝翰战略咨询</small></span>
+        </button>
+        <div class="workspace-tabs"><nav id="nav" aria-label="项目导航" data-en-aria="Project navigation"></nav></div>
+        <div class="workspace-controls">
+          <div id="workspace-menu"></div>
+          <div id="topbar"></div>
+          <div id="account-controls"></div>
+        </div>
+      </div>
+    </header>
+    <main id="main" tabindex="-1"></main>
+    <footer class="site-foot"><span data-en="Beihan Strategy Consulting">贝翰战略咨询</span><span class="footer-links"><a href="#about" data-en="About">系统介绍</a></span></footer>
+  </div>
+  <template id="about-page">
+    <article class="about-page">
+      <header class="page-head desk-page-head"><h1 data-en="About">系统介绍</h1></header>
+      <div class="columns-12 about-layout">
+        <section class="panel about-guide span-8" aria-labelledby="guide-title">
+          <div class="about-section-head"><h2 id="guide-title" data-en="Workflows">工作流程</h2></div>
+          <div class="workflow-list">
+            <button type="button" data-action="import">
+              <strong data-en="Import feedback">导入反馈表</strong>
+              <small>Excel · CSV · TSV</small>
+            </button>
+            <button type="button" data-action="go-review">
+              <strong data-en="Review feedback">抽查反馈</strong>
+              <small data-en="Create a list · confirm labels · export results">生成名单 · 核对标签 · 导出结果</small>
+            </button>
+            <button type="button" data-action="go-inbox">
+              <strong data-en="Follow up with customers">跟进客户反馈</strong>
+              <small data-en="Assign owners · track deadlines · export follow-ups">分派负责人 · 跟踪期限 · 导出清单</small>
+            </button>
+          </div>
+          <dl class="about-storage"><dt data-en="Project storage">项目存储</dt><dd data-en="This browser, per account">当前浏览器，按账号保存</dd></dl>
+        </section>
+        <section class="panel about-company span-4" aria-labelledby="company-title">
+          <div class="company-signature">
+            <span class="brand-symbol"><img src="./assets/beihan-graphite.png" alt="" width="640" height="640"></span>
+            <div><strong data-en="Beihan Strategy Consulting">贝翰战略咨询</strong><small data-en="Put strategy into practice and deliver on commitments">让战略铿锵落地，让管理说到就到</small></div>
+          </div>
+          <div class="company-body"><h2 id="company-title" data-en="Company information">公司信息</h2>
+            <p class="company-name">翱勤（深圳）科技有限公司</p>
+            <dl class="company-facts">
+              <div class="company-contact"><dt data-en="Creator">创作者</dt><dd>Yanbing Min</dd></div>
+              <div class="company-contact"><dt data-en="WeChat official account">微信公众号</dt><dd>贝翰战略咨询</dd></div>
+              <div><dt data-en="Industry">所属行业</dt><dd data-en="Management consulting">企业管理咨询</dd></div>
+              <div><dt data-en="Legal representative">法定代表人</dt><dd>闵彦冰</dd></div>
+              <div><dt data-en="Established">成立日期</dt><dd data-en="June 9, 2020">2020年6月9日</dd></div>
+              <div><dt data-en="Registered capital">注册资本</dt><dd data-en="CNY 1 million">100万元</dd></div>
+              <div><dt data-en="Unified social credit code">统一社会信用代码</dt><dd class="company-code">91440300MA5G80GW88</dd></div>
+              <div><dt data-en="Address">地址</dt><dd>深圳市南山区招商街道沿山社区南海大道1079号花园城数码大厦A座201-CR156</dd></div>
+            </dl>
+          </div>
+        </section>
+      </div>
+    </article>
+  </template>
+  <dialog id="dialog"></dialog>
+  <dialog id="discard-work" aria-labelledby="discard-title" aria-describedby="discard-description">
+    <form method="dialog">
+      <div class="dialog-head"><h2 id="discard-title" data-en="Unsaved changes">有未保存的修改</h2></div>
+      <div class="dialog-body"><p id="discard-description" data-en="Your changes to this feedback have not been saved.">这条反馈的修改尚未保存。</p></div>
+      <div class="dialog-foot">
+        <button type="submit" class="btn btn-danger" value="discard" data-en="Discard changes">放弃修改</button>
+        <button type="submit" class="btn btn-primary" value="keep" data-en="Keep editing" autofocus>继续编辑</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="template-guide" aria-labelledby="template-guide-title">
+    <form method="dialog">
+      <div class="dialog-head"><h2 id="template-guide-title" data-en="CSV filling guide">CSV 填报指南</h2><button type="submit" class="btn btn-quiet" data-en="Close" autofocus>关闭</button></div>
+      <div class="dialog-body">
+        <ol class="guide-steps"></ol>
+        <dl class="guide-fields"></dl>
+      </div>
+      <div class="dialog-foot">
+        <button type="button" class="btn" data-action="download-template-guide" data-en="Download guide">下载填报指南</button>
+        <button type="button" class="btn btn-primary" data-action="template" data-en="Download CSV template">下载 CSV 模板</button>
+      </div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./assets/app.js"></script>
+</body>
+</html>
