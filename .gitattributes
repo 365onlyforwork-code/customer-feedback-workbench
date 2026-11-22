@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.command text eol=lf
+*.png binary
+packaging/Windows/开始使用.txt -text
+packaging/macOS/vendor-notices/** -text

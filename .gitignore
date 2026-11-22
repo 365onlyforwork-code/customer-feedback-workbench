@@ -1,0 +1,15 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.sqlite*
+*.db
+active.json
+ports.json
+instance.lock
+首次登录.txt
+.env
+.env.*
+.customer-feedback-state/
+runtime/
+dist/
+*.zip
