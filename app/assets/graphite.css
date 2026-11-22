@@ -1,0 +1,15 @@
+:root {
+  --graphite-paper: #F7F7F6;
+  --graphite-white: #FFFFFF;
+  --graphite-ink: #242A30;
+  --graphite-slate: #3B434F;
+  --graphite-mist: #ECEEF0;
+  --graphite-line: #D4D7DA;
+  --graphite-muted: #56606C;
+  --graphite-mid: #727B85;
+  --graphite-soft: #ACB2B9;
+  --graphite-quiet: #F2F3F4;
+  color-scheme: light;
+  accent-color: var(--graphite-slate);
+}
+::selection { color: var(--graphite-white); background: var(--graphite-slate); }

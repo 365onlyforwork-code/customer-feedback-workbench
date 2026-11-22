@@ -1,0 +1,77 @@
+.review-tags {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.review-tags legend {
+  margin-bottom: 4px;
+  padding: 0;
+  font-size: var(--ui-text-size, .875rem);
+  font-weight: 650;
+}
+.review-tag-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.review-tag-chips:empty { display: none; }
+.review-tag-chip {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 28px;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  background:var(--graphite-mist);
+  color: var(--accent-dark);
+  text-align: start;
+  font-size: .8125rem;
+}
+.review-tag-chip > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review-tag-chip > span:last-child { flex: none; font-size: 1rem; line-height: 1; }
+.review-tag-chip:hover { border-color: var(--accent); }
+.review-tags summary {
+  display: list-item;
+  width: fit-content;
+  min-height: 30px;
+  padding-block: 4px;
+  color: var(--accent-dark);
+  font-size: .875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.review-tag-picker-body {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--control-radius);
+  background: var(--graphite-paper);
+}
+.review-tag-picker-body .btn { justify-self: start; }
+.review-tag-picker-body button[hidden] { display: none; }
+.review-tag-options { min-width: 0; max-height: 13rem; overflow-y: auto; overscroll-behavior: contain; }
+.review-tag-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  min-height: 31px;
+  margin: 0;
+  padding: 5px 4px;
+  font-size: var(--ui-text-size, .875rem);
+  font-weight: 400;
+  cursor: pointer;
+}
+.review-tag-options label:hover, .review-tag-options label:focus-within { background: var(--light); }
+.review-tag-options label span { min-width: 0; overflow-wrap: anywhere; }
+.review-tag-options input { flex: none; margin: .25em 0 0; accent-color: var(--accent); }
+.review-tag-empty { padding: 4px; color: var(--muted); font-size: .8125rem; }
+@media (pointer: coarse) {
+  .review-tag-chip, .review-tags summary, .review-tag-options label { min-height: 36px; }
+}
