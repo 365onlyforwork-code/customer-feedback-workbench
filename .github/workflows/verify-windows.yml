@@ -12,7 +12,7 @@ on:
         description: Exact ZIP filename attached to that release
         type: string
         required: true
-        default: 客户反馈工作台-1.0.0-Windows.zip
+        default: CustomerFeedback-1.0.0-Windows.zip
 
 permissions:
   contents: read
