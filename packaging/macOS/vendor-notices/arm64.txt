@@ -1,0 +1,10 @@
+CPython 3.14.10 for arm64 macOS
+Python Software Foundation and the contributors credited in the included licenses.
+Runtime distribution: Astral Python Build Standalone 20261110
+Runtime source: https://github.com/astral-sh/python-build-standalone/releases/download/20261110/cpython-3.14.10+20261110-aarch64-apple-darwin-install_only_stripped.tar.gz
+SHA-256: f15ec3d15460dd66c2eb88639b152cd9040e7d1ece11e38bf89e8f53f0171e02
+License and build metadata source: https://github.com/astral-sh/python-build-standalone/releases/download/20261110/cpython-3.14.10+20261110-aarch64-apple-darwin-pgo+lto-full.tar.zst
+SHA-256: d14291578918474f3b02d2530c90dcba30efa7ccc0e3b01ae1bfeebbbbcd9f6a
+The interpreter is the unmodified upstream binary.
+Interpreter and bundled dependencies: see licenses/ and lib/python3.14/LICENSE.txt.
+This application uses the runtime with its standard library. Developer tools, installers, and Tcl/Tk are omitted.
