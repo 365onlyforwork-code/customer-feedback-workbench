@@ -1,6 +1,6 @@
 """Smoke-test the extracted Windows release through its customer .cmd launcher."""
 import contextlib
-import http.cookiejar
+from http.cookiejar import CookieJar
 import json
 import os
 from pathlib import Path
@@ -20,7 +20,7 @@ ARCH = None
 
 
 def client():
-    return build_opener(ProxyHandler({}), HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    return build_opener(ProxyHandler({}), HTTPCookieProcessor(CookieJar()))
 
 
 def http(opener, url, data=None, extra=None):
